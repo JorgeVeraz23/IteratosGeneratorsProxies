@@ -2,7 +2,7 @@
     <head></head>
     <body> 
         <script>
-const iterable = [1,2,3,4,5];
+/*const iterable = [1,2,3,4,5];
 //tipos de datos iterables
 //const iterable = "Hola Mundo";
 //const iterable = new Set([1,2,3,4,5]);
@@ -20,15 +20,85 @@ console.log(iterador.next());
 console.log(iterador.next());
 console.log(iterador.next());
 console.log(iterador.next());
-console.log(iterador.next());*/
+console.log(iterador.next());
 
 let next = iterador.next();
 while(!next.done){
     console.log(next.value);
     next = iterador.next();
-}
+}*/
+//un generador es convertir el codigo de una funcion en iterable
+/*
+// Generators
+    function* iterable(){
+        yield "hola";
+        console.log("Hola consola");
+        yield "hola 2";
+        console.log("Seguimos con mas instruccione de nuestro codigo");
+        yield "hola 3";
+        yield "hola 4";
+    }
 
-        
+    let iterador = iterable();
+//recorrer todos los elementos de la funcion
+    for(let y of iterador){
+        console.log(y);
+    }
+//guardar todos los elementos de la funcion en un arreglo 
+const arr = [...iterable()];
+console.log(arr);
+
+    function cuadrado(valor){
+        setTimeout(() => {
+            console.log({valor,
+                resultado: valor * valor
+            }, Math.random() * 1000);
+        })
+        return {
+            valor,
+            resultado: valor * valor
+        }
+    }
+
+    function* generador(){
+        console.log("Inicia Generator");
+        yield cuadrado(0);
+        yield cuadrado(2);
+        yield cuadrador(3);
+        yield cuadrado(4);
+        yield cuadrado(5);
+        console.log("Termina Generator");
+    }
+
+    let gen = generador();
+
+    for (let y of gen){
+        console.log(y);
+    }*/
+
+    const persona = {
+        nombre: "",
+        apellido: "",
+        edad: 0
+    }
+
+    const manejador = {
+        set(obj, prop, valor){
+            if(Object.keys(obj).indexOf(prop) === -1){
+                
+                return console.error(`La propiedad "${prop}" no existe en el objeto persona`)
+            }
+            obj[prop] = valor;
+        }
+    }
+
+    const jon = new Proxy(persona, manejador);
+    jon.nombre = "Jon";
+    jon.apellido = "Mircha";
+    jon.edad = 35;
+    jon.twitter = "@jonmircha";
+    console.log(jon)
+    console.log(persona)
     
 
     </script>
